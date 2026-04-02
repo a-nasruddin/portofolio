@@ -1,0 +1,8 @@
+name = "devops-minimal"
+license = "MIT"
+description = "A dark, minimalist theme for DevOps/SRE/Cloud Engineers."
+homepage = "https://github.com/johndoe/portfolio"
+min_version = "0.110.0"
+
+[author]
+  name = "John Doe"

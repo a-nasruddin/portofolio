@@ -1,0 +1,16 @@
+<nav class="navbar" role="navigation" aria-label="Main Navigation">
+  <div class="container">
+    <a href="/" class="navbar-brand" aria-label="{{ .Site.Title }} Home">
+      <span class="brand-bracket">&lt;</span>{{ .Site.Params.authorName | replaceRE " " "" }}<span class="brand-bracket"> /&gt;</span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-nav" id="navbar-nav" role="list">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#skills">Skills</a></li>
+      <li><a href="/#blog">Blog</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>

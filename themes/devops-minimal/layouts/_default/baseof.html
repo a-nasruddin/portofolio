@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+{{- partial "head.html" . -}}
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  {{- partial "nav.html" . -}}
+  <main id="main-content">
+    {{- block "main" . -}}{{- end -}}
+  </main>
+  {{- partial "footer.html" . -}}
+  <script src="/js/main.js"></script>
+</body>
+</html>

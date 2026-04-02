@@ -1,0 +1,113 @@
+# ═══════════════════════════════════════════════════════════
+# Hugo
+# ═══════════════════════════════════════════════════════════
+
+# Generated output — never commit the built site
+public/
+
+# Hugo build artifacts
+resources/_gen/
+.hugo_build.lock
+hugo_stats.json
+
+# Hugo cache directory (created by hugo server)
+.cache/
+
+# ═══════════════════════════════════════════════════════════
+# Themes (if installed via git clone instead of Hugo Modules)
+# Uncomment the line below if your theme lives in themes/ as
+# a plain copy (not a submodule/Hugo Module) and you DO want
+# to track it. Leave it commented to exclude external themes.
+# ═══════════════════════════════════════════════════════════
+# themes/
+
+# ═══════════════════════════════════════════════════════════
+# Docker
+# ═══════════════════════════════════════════════════════════
+
+# Local Docker build context overrides
+.dockerignore.local
+
+# ═══════════════════════════════════════════════════════════
+# Kubernetes / Secrets
+# ═══════════════════════════════════════════════════════════
+
+# Never commit real secrets or kubeconfigs
+*.secret.yaml
+*.secret.yml
+kubeconfig
+kubeconfig.yaml
+.kube/
+
+# ═══════════════════════════════════════════════════════════
+# OS generated files
+# ═══════════════════════════════════════════════════════════
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ═══════════════════════════════════════════════════════════
+# Editors & IDEs
+# ═══════════════════════════════════════════════════════════
+
+# VS Code (keep .vscode/extensions.json if you want to share recommended extensions)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains (IntelliJ, GoLand, etc.)
+.idea/
+*.iml
+
+# Vim / Neovim
+*.swp
+*.swo
+Session.vim
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ═══════════════════════════════════════════════════════════
+# Environment & credentials
+# ═══════════════════════════════════════════════════════════
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets.toml
+secrets.yaml
+secrets.yml
+
+# ═══════════════════════════════════════════════════════════
+# Logs & temp files
+# ═══════════════════════════════════════════════════════════
+
+*.log
+*.tmp
+*.temp
+/tmp/

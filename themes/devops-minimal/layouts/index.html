@@ -1,0 +1,149 @@
+{{ define "main" }}
+{{- $p := .Params -}}
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" aria-label="Hero Introduction">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-greeting">{{ $p.hero.greeting }}</p>
+      <h1 class="hero-name">
+        {{ $p.hero.firstName }} <span class="accent">{{ $p.hero.lastName }}</span>
+      </h1>
+      <div class="hero-role">
+        <span id="typing-text" data-roles='{{ $p.hero.roles | jsonify }}'>{{ index $p.hero.roles 0 }}</span><span class="cursor" aria-hidden="true"></span>
+      </div>
+      <p class="hero-description">{{ $p.hero.description }}</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary" id="hero-contact-btn">Get In Touch</a>
+        <a href="#about" class="btn btn-outline" id="hero-about-btn">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" aria-label="About Me">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// about me</p>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        {{ range $p.about.paragraphs }}
+        <p>{{ . }}</p>
+        {{ end }}
+      </div>
+      <div class="about-stats fade-in">
+        {{ range $p.stats }}
+        <div class="stat-card">
+          <span class="stat-number">{{ .number }}</span>
+          <span class="stat-label">{{ .label }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SKILLS ═══════════════ -->
+<section id="skills" aria-label="Skills and Technologies">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// tech stack</p>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid">
+      {{ range $p.skills }}
+      <div class="skill-category fade-in">
+        <h3 class="skill-category-title">{{ .category }}</h3>
+        <div class="skill-tags">
+          {{ range .items }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BLOG ═══════════════ -->
+<section id="blog" aria-label="Blog Posts">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// thoughts &amp; articles</p>
+      <h2 class="section-title">Latest Posts</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="blog-grid">
+      {{ $posts := where .Site.RegularPages "Section" "blog" }}
+      {{ range first 3 $posts }}
+      <a href="{{ .Permalink }}" class="blog-card fade-in" id="blog-{{ .File.ContentBaseName }}">
+        <div class="blog-card-meta">
+          <span>{{ .Date.Format "Jan 02, 2006" }}</span>
+          {{ with .Params.tags }}{{ range first 1 . }}<span class="blog-card-tag">#{{ . }}</span>{{ end }}{{ end }}
+        </div>
+        <h3 class="blog-card-title">{{ .Title }}</h3>
+        <p class="blog-card-excerpt">{{ .Summary | truncate 150 }}</p>
+        <span class="blog-card-arrow">Read more →</span>
+      </a>
+      {{ else }}
+      <div class="blog-card fade-in">
+        <p class="coming-soon">// More articles coming soon...</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" aria-label="Contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">// get in touch</p>
+      <h2 class="section-title">Contact Me</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-wrapper">
+      <div class="contact-info fade-in">
+        <p>{{ $p.contact.intro }}</p>
+        <div class="contact-links">
+          {{ with $p.contact.email }}
+          <a href="mailto:{{ . }}" class="contact-link" id="contact-email-link">
+            <span class="contact-link-icon">✉</span>{{ . }}
+          </a>
+          {{ end }}
+          {{ with $p.contact.github }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="contact-link" id="contact-github-link">
+            <span class="contact-link-icon">⊕</span>GitHub
+          </a>
+          {{ end }}
+          {{ with $p.contact.linkedin }}
+          <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="contact-link" id="contact-linkedin-link">
+            <span class="contact-link-icon">⊞</span>LinkedIn
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      <form class="contact-form fade-in" id="contact-form" action="mailto:{{ $p.contact.email }}" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-email-input">Email</label>
+          <input type="email" id="contact-email-input" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="contact-submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+{{ end }}

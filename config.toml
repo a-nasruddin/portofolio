@@ -1,0 +1,18 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Akhmad Nasruddin | DevOps & Cloud Engineer"
+theme = "devops-minimal"
+
+[params]
+  description = "DevOps/SRE/Cloud Engineer specializing in Kubernetes, cloud infrastructure, and automation."
+  authorName = "anan"
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[build]
+  writeStats = true

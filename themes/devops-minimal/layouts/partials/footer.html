@@ -1,0 +1,12 @@
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-text">
+        Built with <span class="accent">Hugo</span> · Containerized with <span class="accent">Docker</span> · Deployed on <span class="accent">Kubernetes</span>
+      </p>
+      <p class="footer-text">
+        © {{ now.Year }} <span class="accent">{{ .Site.Params.authorName | default "Your Name" }}</span>
+      </p>
+    </div>
+  </div>
+</footer>

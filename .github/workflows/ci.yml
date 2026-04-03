@@ -70,15 +70,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Timestamp
+        run: echo "BUILD_TS=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
       - name: Extract Docker metadata (tags & labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            # Tag with short SHA for traceability (e.g. sha-a1b2c3d)
-            type=sha,prefix=sha-,format=short
-            # Always tag latest on main
+            # Flux needs a sortable string. Timestamp works perfectly!
+            type=raw,value=${{ env.BUILD_TS }}-sha-${{ github.sha }}
             type=raw,value=latest,enable=true
 
       - name: Set up Docker Buildx
